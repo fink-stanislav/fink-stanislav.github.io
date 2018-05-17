@@ -8,10 +8,42 @@ function readURL(input) {
 		reader.onload = function(e) {
 			$('#image')
 				.attr('src', e.target.result)
-				.width(150)
-				.height(200);
+				.width(224)
+				.height(224);
 		};
 
 		reader.readAsDataURL(input.files[0]);
 	}
 }
+
+$(document).ready(function() {
+
+	$("#analyze").click(function() {
+		$("#result_of_analysis").html('unknown')
+		$("#analyze").addClass("is-loading")
+		$("#analyze_form").submit()
+	})
+
+	$("#analyze_form").submit(function(e) {
+	    e.preventDefault();
+	    var formData = new FormData(this);    
+
+	    $.ajax({
+	        url: $(this).attr("action"),
+	        type: 'POST',
+	        data: formData,
+	        success: function (data) {
+	            $("#result_of_analysis").html(data)
+	            $("#analyze").removeClass("is-loading")
+	        },
+	        error: function (data) {
+	            $("#result_of_analysis").html("Analysis failed")
+	            $("#analyze").removeClass("is-loading")
+	        },
+	        cache: false,
+	        contentType: false,
+	        processData: false
+	    });
+	});
+	
+})
