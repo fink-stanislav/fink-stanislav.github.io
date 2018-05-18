@@ -19,7 +19,6 @@
           <a class="navbar-item" href="../index.html">
             Home
           </a>
-
     	  <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="demos.html">
               Demos
@@ -121,9 +120,10 @@
       <div class="container">
         <h1 class="title">Results</h1>
         <div class="content">
+          <h4>Detecting faces</h4>
           <p>
             Current approach (OpenCV and Haar Cascades), despite being quite accurate, seems to be
-            not very appropriate for detecting faces from noisy input provided by real users the
+            not very appropriate for detecting faces from noisy input provided by real users of the
             application like this. An image's rotation of more than 19 degrees makes it impossible for
             Haar cascade to recognize face.
           </p>
@@ -132,6 +132,18 @@
             but right and left profiles. However it still makes sense to try out other approaches
             such as CNNs. Convolutional neural nets are able to recognize patterns on images regardless
             of their positions.
+          </p>
+          <h4>Classifying dog breeds</h4>
+          <p>
+            The solution uses transfer learning for building the model. It obtains accuracy of 85% and takes
+            only two minutes to train. Training Xception model from scratch could take days or even weeks
+            depending on hardware.
+          </p>
+          <h4>Improvements</h4>
+          <p>
+            Algorithm can be improved with using of multiple models. E.g. models can be combined in ensemble
+            that chooses predictions provided by majority of models. Also, additional layers of neural network
+            can probably improve performance.
           </p>
         </div>
       </div>
