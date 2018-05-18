@@ -122,15 +122,14 @@
         <div class="content">
           <h4>Detecting faces</h4>
           <p>
-            Current approach (OpenCV and Haar Cascades), despite being quite accurate, seems to be
-            not very appropriate for detecting faces from noisy input provided by real users of the
-            application like this. An image's rotation of more than 19 degrees makes it impossible for
-            Haar cascade to recognize face.
+            Current approach (OpenCV and Haar Cascades) is quite accurate. However, it seems to be not perfect
+            for detecting faces from noisy input provided by real users of the application like this.
+            An image's rotation of more than 19 degrees makes it impossible for Haar cascade to recognize a face.
           </p>
           <p>
-            OpenCV algorithms can be tuned by using more features, e.g. not only frontal face images
-            but right and left profiles. However it still makes sense to try out other approaches
-            such as CNNs. Convolutional neural nets are able to recognize patterns on images regardless
+            OpenCV algorithms can be tuned by using more features. Except for frontal face images, right and
+            left profiles are available. However, it still makes sense to try out other approaches
+            such as CNNs. Convolutional neural networks can recognize patterns on images regardless
             of their positions.
           </p>
           <h4>Classifying dog breeds</h4>
@@ -141,9 +140,9 @@
           </p>
           <h4>Improvements</h4>
           <p>
-            Algorithm can be improved with using of multiple models. E.g. models can be combined in ensemble
-            that chooses predictions provided by majority of models. Also, additional layers of neural network
-            can probably improve performance.
+            The Algorithm can be improved by using multiple models. For example, models can be combined in an ensemble
+            that chooses predictions provided by the majority of models. Also, additional layers of the neural
+            network can probably improve performance.
           </p>
         </div>
       </div>
