@@ -10,10 +10,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../scripts/image_tools.js"></script>
-    
   </head>
-  <body>
 
+  <body>
     <nav class="navbar is-transparent">
       <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
@@ -47,13 +46,43 @@
         </div>
       </div>
     </section>
-    
+
     <section class="section">
       <div class="container">
         <h1 class="title">Description</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae erat a dui gravida lobortis eu et augue. Nulla purus est, ullamcorper non risus porta, placerat aliquam tellus. Nullam fermentum faucibus nunc, eu placerat mauris sagittis ut. Suspendisse dictum aliquet turpis, vulputate euismod metus dapibus ut. Suspendisse potenti. Praesent bibendum tincidunt odio, et laoreet nunc feugiat id. Vivamus sodales est vel dui accumsan faucibus. Sed eget tincidunt velit.
-        </p>
+        <div class="content">
+          <p>
+            Before making a distinction between different dog breeds, the application
+            tries to decide if human or dog is depicted on the image. OpenCV's implementation
+            of <a href="https://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html">Haar
+            feature-based cascade classifiers</a> is used to detect human faces in images.
+          </p>
+          <p>
+            A pre-trained ResNet-50 model is used, to detect dogs. The application downloads the
+            <a href="http://ethereon.github.io/netscope/#/gist/db945b393d40bfa26006">ResNet-50 model</a>,
+            along with weights that have been trained on <a href="https://en.wikipedia.org/wiki/ImageNet">
+            ImageNet</a>, a large and popular dataset used for image classification and other computer vision
+            tasks. ImageNet contains over 10 million URLs, each linking to an image containing an object from one
+            of <a href="https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a">1000 categories</a>. Given an image,
+            this pre-trained ResNet-50 model returns a prediction (derived from the available categories in
+            ImageNet) for the object that is contained in the image.
+          </p>
+          <p>
+            Distinguishing between dog breeds is a complex task but Convolutional Neural Networks perform well
+            on it. While it is possible to learn the network from scratch, it is reasonable to use transfer
+            learning. The key advantage of transfer learning is the usage of bottleneck features of a pre-trained model.
+            A new model consists mostly of fully-connected layers and takes bottleneck features as input.
+            Only those layers are trained afterward. Models built like that, show 
+            <a href="https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html">
+            excellent performance</a> and spare a lot of time and computational power to be trained.
+          </p>
+          <p>
+            The pre-trained model named <a href="https://arxiv.org/abs/1610.02357">Xception</a> is used to solve the
+            problem. Global average pooling layer and Fully-connected layer provide a new model trained on
+            available images. To make a classification, Xception takes an image as input and returns bottleneck
+            features. The features go into the new model as input and new model makes the classification. 
+          </p>
+        </div>
       </div>
     </section>
 
@@ -91,9 +120,20 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Results</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae erat a dui gravida lobortis eu et augue. Nulla purus est, ullamcorper non risus porta, placerat aliquam tellus. Nullam fermentum faucibus nunc, eu placerat mauris sagittis ut. Suspendisse dictum aliquet turpis, vulputate euismod metus dapibus ut. Suspendisse potenti. Praesent bibendum tincidunt odio, et laoreet nunc feugiat id. Vivamus sodales est vel dui accumsan faucibus. Sed eget tincidunt velit.
-        </p>
+        <div class="content">
+          <p>
+            Current approach (OpenCV and Haar Cascades), despite being quite accurate, seems to be
+            not very appropriate for detecting faces from noisy input provided by real users the
+            application like this. An image's rotation of more than 19 degrees makes it impossible for
+            Haar cascade to recognize face.
+          </p>
+          <p>
+            OpenCV algorithms can be tuned by using more features, e.g. not only frontal face images
+            but right and left profiles. However it still makes sense to try out other approaches
+            such as CNNs. Convolutional neural nets are able to recognize patterns on images regardless
+            of their positions.
+          </p>
+        </div>
       </div>
     </section>
 
