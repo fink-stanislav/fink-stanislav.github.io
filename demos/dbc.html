@@ -7,31 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="../styles/utilities.css">
 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../scripts/image_tools.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/mustache.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_mustache.js" type="text/javascript"></script>
+    <script src="../scripts/image_tools.js" type="text/javascript"></script>
   </head>
-
   <body>
-    <nav class="navbar is-transparent">
-      <div id="navbarExampleTransparentExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="../index.html">
-            Home
-          </a>
-    	  <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="demos.html">
-              Demos
-            </a>
-            <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="">
-                Dog breed classifier
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+  
+  <script type="text/javascript">
+    $.Mustache.load('../templates/header.mustache', function() {
+	    $('#header').mustache('header', {});
+	});
+    $.Mustache.load('../templates/footer.mustache', function() {
+	    $('#footer').mustache('footer', {});
+	});
+  </script>
+
+  <div id="header"></div>
 
     <section class="hero is-primary">
       <div class="hero-body">
@@ -148,17 +141,8 @@
       </div>
     </section>
 
-	<div id="wrapper"></div>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            <strong>Misc</strong> by <a href="https://www.linkedin.com/in/stanislau-fink/">Stanislau Fink</a>
-          </p>
-        </div>
-      </div>
-    </footer>
-
+  <div id="wrapper"></div>
+  <div id="footer"></div>
+  
   </body>
 </html>
