@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Misc - AdaBoost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/mustache.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_mustache.js" type="text/javascript"></script>
+    <script src="../scripts/image_tools.js" type="text/javascript"></script>
+  </head>
+  <body>
+  
+  <script type="text/javascript">
+    $.Mustache.load('../templates/header.mustache', function() {
+	    $('#header').mustache('header', {});
+	});
+    $.Mustache.load('../templates/footer.mustache', function() {
+	    $('#footer').mustache('footer', {});
+	});
+  </script>
+  
+    <div id="header"></div>
+  
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            AdaBoost Approach
+          </h1>
+          <h2 class="subtitle">
+            AdaBoost Approach explained
+          </h2>
+        </div>
+      </div>
+    </section>
+
+	<section class="section">
+	
+	<div class="container">
+
+    <h4 id="Foreword">Foreword<a class="anchor-link" href="#Foreword"></a></h4>
+    
+    <p>AdaBoost is short for <a href="https://en.wikipedia.org/wiki/AdaBoost">Adaptive Boosting</a>. AdaBoost is used in
+    conjunction with other learning algorithms to improve their performance (it boosts other algorithms). Boosting is a 
+    general method for improving the accuracy of any given learning algorithm. So obviously, adaptive boosting refers to
+    a boosting algorithm that can adjust itself to changing scenarios.</p>
+    
+    <h4 id="Concept-by-example">Concept by <a href="https://prateekvjoshi.com/2014/05/05/what-is-adaboost/">example</a>
+    <a class="anchor-link" href="#Concept-by-example"></a></h4>
+    
+    <p>Let’s say you are given the task of listing out all the people in the city of San Francisco who are taller than 
+    5’7″,and weigh less than 190 lbs. Now the problem is that you are supposed to do this without the help of machines. 
+    All you are allowed to do is take a look at the person and determine whether or not that person qualifies. How do we
+    do it?</p>
+    
+    <p>You may or may not be good at estimating these parameters just by looking at the person. So to improve the accuracy,
+    you get two people (<em>weak learners</em>) to help you out. The first person is really good at guessing the height,
+    the second person is really good at guessing the weight. Individually, they may not be useful to you, because they can
+    do only one simple task. But if you combine them together then results of their work would be much more accurate.</p>
+    
+    <h4 id="Learning-process">Learning process<a class="anchor-link" href="#Learning-process"></a></h4>
+    
+    <p>So you have two helpers and each one of them is good at something. Now it is time to train them before they started
+    to do a real work. You show them people whose parameters you know and they look at them one after another. Every learner
+    tries to classify a person that he/she sees. After an attempt of classification you mark correctly and incorrectly
+    classified examples and stress out that incorrect ones are more important. Also by ratio of correct/incorrect examples
+    you estimate learner's performance. This estimates will be useful at the time of making predictions. The subsequent
+    learner sees same set of examples and your marks and tries to reclassify incorrect examples in the first place. Then
+    you mark results of that learner and the learner his-/herself. This process repeats until all known examples are
+    classified correctly or number of incorrect ones is minimal.</p>
+    
+    <p>Learning process can be explained in slightly more rigorous terms using a diagram below:</p>
+    <p><img src="people.jpg" align="center"></p>
+    
+    <ol>
+      <li>Weak learner suggests a hypothesis <em>h<sub>1</sub></em> (all people lighter than 190 lbs qualify)</li>
+      <li>Applying <em>h<sub>1</sub></em> divides all data into two parts: qualified (blue) and not qualified (pink). Besides
+      correct examples the blue part also contains incorrect ones that should belong to pink part. It means that
+      <em>h<sub>1</sub></em> is not good enough, that is why a learner who suggested it is called weak.</li>
+      <li>Although the learner is weak a pretty good job is done and a lot of examples are classified correctly. So weight
+      of learner's opinion should be increased (and set to <em>w<sub>1</sub></em>).</li>
+      <li>Incorrect examples in blue part marked as important - their weight is increased and they will be rechecked later.</li>
+      <li>Another weak learner suggests a hypothesis <em>h<sub>2</sub></em> (all people higher than 5’7″ qualify)</li>
+      <li>Applying <em>h<sub>2</sub></em> also divides all data into two parts: qualified (blue) and not qualified (pink). At
+      this time the blue part also contains incorrect examples that should belong to pink part.</li>
+      <li>Weight of this learner's opinion also re-estimated because it also makes some sense (weight is also increased and
+      set to <em>w<sub>2</sub></em>).</li>
+      <li>Incorrect classifications are reweighed and now you are ready to produce a final hypothesis <em>H</em> that is
+      aware of all previous hypotheses and weights of learners. You need just to sum up the results using weighted average:</li>
+    </ol>
+    
+    <h4 id="Predicting-process">Predicting process<a class="anchor-link" href="#Predicting-process">¶</a></h4>
+    <p>When all learners are trained then they are ready to make predictions. You show them person whose parameters you 
+    do not know and they make their guesses. Afterwards you do a conclusion looking at learners' predictions and weights 
+    you have obtained during learning. In other words you are just using your final hypothesis <em>H</em>.</p>
+    
+    </div>
+    
+    </section>
+    
+    <div id="wrapper"></div>
+    <div id="footer"></div>
+
+  </body>
+</html>
