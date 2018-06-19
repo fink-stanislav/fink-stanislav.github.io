@@ -42,8 +42,10 @@
 	<section class="section">
 	
 	<div class="container">
+	
+	<div class="content">
 
-    <h4 id="Foreword">Foreword<a class="anchor-link" href="#Foreword"></a></h4>
+    <h4 id="Foreword">Foreword<a href="#Foreword"></a></h4>
     
     <p>AdaBoost is short for <a href="https://en.wikipedia.org/wiki/AdaBoost">Adaptive Boosting</a>. AdaBoost is used in
     conjunction with other learning algorithms to improve their performance (it boosts other algorithms). Boosting is a 
@@ -75,7 +77,7 @@
     classified correctly or number of incorrect ones is minimal.</p>
     
     <p>Learning process can be explained in slightly more rigorous terms using a diagram below:</p>
-    <p><img src="people.jpg" align="center"></p>
+    <p class="has-text-centered"><img src="../images/adaboost/people.jpg" align="center"></p>
     
     <ol>
       <li>Weak learner suggests a hypothesis <em>h<sub>1</sub></em> (all people lighter than 190 lbs qualify)</li>
@@ -91,13 +93,15 @@
       <li>Weight of this learner's opinion also re-estimated because it also makes some sense (weight is also increased and
       set to <em>w<sub>2</sub></em>).</li>
       <li>Incorrect classifications are reweighed and now you are ready to produce a final hypothesis <em>H</em> that is
-      aware of all previous hypotheses and weights of learners. You need just to sum up the results using weighted average:</li>
+      aware of all previous hypotheses and weights of learners. You need just to sum up the results using weighted average.</li>
     </ol>
     
-    <h4 id="Predicting-process">Predicting process<a class="anchor-link" href="#Predicting-process">¶</a></h4>
+    <h4 id="Predicting-process">Predicting process<a class="anchor-link" href="#Predicting-process"></a></h4>
     <p>When all learners are trained then they are ready to make predictions. You show them person whose parameters you 
     do not know and they make their guesses. Afterwards you do a conclusion looking at learners' predictions and weights 
     you have obtained during learning. In other words you are just using your final hypothesis <em>H</em>.</p>
+    
+    </div>
     
     </div>
     

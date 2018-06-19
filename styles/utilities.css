@@ -13,3 +13,8 @@ body {
 .tight-form {
 	width: 500px
 }
+
+.list-item {
+	margin-bottom: 20px;
+	display: block!important;
+}
