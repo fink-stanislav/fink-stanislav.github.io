@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Misc - Explained</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/mustache.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_mustache.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      $.Mustache.load('../templates/header.mustache', function() {
+  	    $('#header').mustache('header', {});
+  	});
+      $.Mustache.load('../templates/footer.mustache', function() {
+  	    $('#footer').mustache('footer', {});
+  	});
+    </script>
+
+    <div id="header"></div>
+
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Object-oriented programming
+          </h1>
+          <h2 class="subtitle">
+            Pros and Cons in Data Science context
+          </h2>
+        </div>
+      </div>
+    </section>
+
+	<section class="section">
+	  <div class="container content">
+	    <h2>Table of content</h2>
+	    <ul>
+	      <li>Basic concepts: Inheritance and Composition</li>
+	      <li>Obvious designs</li>
+	      <li>Non-Obvious designs</li>
+	      <li>How functional programming reduces OOP overhead</li>
+	      <li>Unit testing</li>
+	    </ul>
+	    
+	    <h2>Basic concepts: Inheritance and Composition</h2>
+	    <h2>Obvious designs</h2>
+	    <h2>Non-Obvious designs</h2>
+	    <h2>How functional programming reduces OOP overhead</h2>
+	    <h2>Unit testing</h2>
+	    
+	  </div>
+	</section>
+
+    <div id="wrapper"></div>
+    <div id="footer"></div>
+
+  </body>
+</html>
